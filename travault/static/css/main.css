@@ -1,5 +1,27 @@
 
 
+
+
+/** Images  **/
+
+.hero-bg-img {
+    background-image: url('/static/images/travel-data-img-1440px.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 80vh;
+}
+
+/** Fonts **/
+
+.roboto {
+    font-family: Roboto;
+}
+
+.Lato {
+    font-family: Lato;
+}
+
 /** Navbar **/
 .logo {
     min-width: 150px; 
@@ -40,26 +62,23 @@
     font-size: 20px; 
 }
 
-/** Hero image section  **/
+/** Get started section **/
 
-.hero-bg-img {
-    background-image: url('/static/images/travel-data-img-1440px.jpg');
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat; 
-    height: 80vh;
-    
-}
-
-.main-text-font {
-    font-family: Roboto;
-}
-
-.hero-text {
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.hero-bg-img div{
+.get-started-section div{
     color: #81d67a;
+}
+
+/* Custom styles for your button */
+.btn-get-started {
+    color: #81d67a ; /* Text color */
+    background-color: #ffffff ; /* Background color */
+    border-color: #81d67a ; /* Border color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect */
+.btn-get-started:hover {
+    background-color: #81d67a ; /* Change background color on hover */
+    color: #fafafa ; /* Change text color on hover */
+    border-color: #81d67a ; /* Keep the border color the same */
 }
