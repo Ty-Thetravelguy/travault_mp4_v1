@@ -2,5 +2,46 @@
 {% load static %}
 
 {% block content %}
-<h1 class="display-4 text-success">It works</h1>
+<div class="container-fluid home-nav">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
+        <div class="container-fluid home-nav ">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'images/TraVault_transparent-logo_v2.png' %}" alt="TraVault Logo" height="30" class="d-inline-block align-top logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item ">
+                <a class="nav-link active home-nav-text" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link home-nav-text" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link home-nav-text" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link home-nav-text" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link home-nav-text" href="#">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link home-nav-text" href="#">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</div>
+
+<div class="container-fluid hero-bg-img">
+    <div class="container text-center">
+        <h1 class="display-4">Welcome to Travault</h1>
+        <p class="lead">Secure and Efficient Corporate Travel Management</p>
+        <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</div>
 {% endblock %}
