@@ -2,7 +2,7 @@
 
 
 
-/** Images  **/
+/******************** Images  ********************/
 
 .hero-bg-img {
     background-image: url('/static/images/travel-data-img-1440px.jpg');
@@ -12,7 +12,7 @@
     height: 80vh;
 }
 
-/** Fonts **/
+/******************** Fonts ********************/
 
 .roboto {
     font-family: Roboto;
@@ -22,7 +22,7 @@
     font-family: Lato;
 }
 
-/** Navbar **/
+/******************** Navbar ********************/
 .logo {
     min-width: 150px; 
     min-height: 80px; 
@@ -62,23 +62,27 @@
     font-size: 20px; 
 }
 
-/** Get started section **/
+/******************** Get started section ********************/
 
 .get-started-section div{
     color: #81d67a;
 }
 
-/* Custom styles for your button */
 .btn-get-started {
-    color: #81d67a ; /* Text color */
-    background-color: #ffffff ; /* Background color */
-    border-color: #81d67a ; /* Border color */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    color: #81d67a ; 
+    background-color: #ffffff ; 
+    border-color: #81d67a ; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Hover effect */
 .btn-get-started:hover {
-    background-color: #81d67a ; /* Change background color on hover */
-    color: #fafafa ; /* Change text color on hover */
-    border-color: #81d67a ; /* Keep the border color the same */
+    background-color: #81d67a ; 
+    color: #fafafa ; 
+    border-color: #81d67a ; 
+}
+
+/******************** Features ********************/
+
+.bg-gray-200 {
+    background-color: #e9ecef; /* This is the Bootstrap gray-200 color */
 }
