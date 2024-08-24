@@ -1,29 +1,31 @@
-/* Initial logo size */
+
+
+/** Navbar **/
 .logo {
     min-width: 150px; 
     min-height: 80px; 
     transition: all 0.3s ease;
 }
 
-/* Initial navbar background color */
 .home-nav {
     background-color: #001f3f;
     transition: all 0.3s ease;
 }
 
-/* Text color for navbar links */
+
 .home-nav-text {
+    font-family: Lato;
     color: #fafafa;
 }
 
-/* Active link with larger font size */
+
 .navbar .nav-link.home-nav-text.active {
     font-size: 25px;
     color: #FAFAFA;
     transition: all 0.3s ease;
 }
 
-/* Styles applied when the page is scrolled */
+
 .navbar-scrolled .logo {
     min-width: 120px;
     min-height: 60px;
@@ -31,17 +33,33 @@
 
 .navbar-scrolled {
     padding: 10px 0;
-    background-color: #001f3f; /* You can keep the same color or change it when scrolled */
+    background-color: #001f3f; 
 }
 
 .navbar-scrolled .navbar .nav-link.home-nav-text.active {
-    font-size: 20px; /* Smaller font size when scrolled */
+    font-size: 20px; 
 }
+
+/** Hero image section  **/
 
 .hero-bg-img {
     background-image: url('/static/images/travel-data-img-1440px.jpg');
     background-size: cover;
-    background-position: center; /* Optional: Centers the image */
-    background-repeat: no-repeat; /* Optional: Prevents the image from repeating */
+    background-position: center; 
+    background-repeat: no-repeat; 
     height: 80vh;
+    
+}
+
+.main-text-font {
+    font-family: Roboto;
+}
+
+.hero-text {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.hero-bg-img div{
+    color: #81d67a;
 }
