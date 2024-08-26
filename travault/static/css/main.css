@@ -5,11 +5,19 @@
 /******************** Images  ********************/
 
 .hero-bg-img {
-    background-image: url('/static/images/travel-data-img-1440px.jpg');
+    background-image: url('/static/images/travel-data-img-2560px.jpg');
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 
     height: 80vh;
+}
+
+.banna-img-1 {
+    background-image: url('/static/images/data-wave-img-2560px.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 50vh;
 }
 
 /******************** Fonts ********************/
@@ -34,28 +42,29 @@
     transition: all 0.3s ease;
 }
 
-
 .home-nav-text {
     font-family: Lato;
     color: #fafafa;
+    margin-top: 10px;
 }
 
-
-.navbar .nav-link.home-nav-text.active {
+.navbar-nav .nav-link.active {
     font-size: 25px;
     color: #FAFAFA;
     transition: all 0.3s ease;
 }
 
+.navbar-nav .nav-link:hover {
+    color: #afc0ec; 
+}
 
 .navbar-scrolled .logo {
-    min-width: 120px;
-    min-height: 60px;
+    min-width: 80px;
+    min-height: 40px;
 }
 
 .navbar-scrolled {
     padding: 10px 0;
-    background-color: #001f3f; 
 }
 
 .navbar-scrolled .navbar .nav-link.home-nav-text.active {
@@ -64,25 +73,56 @@
 
 /******************** Get started section ********************/
 
-.get-started-section div{
-    color: #81d67a;
-}
 
 .btn-get-started {
-    color: #81d67a ; 
+    color: #00ab8b ; 
     background-color: #ffffff ; 
-    border-color: #81d67a ; 
+    border-color: #00ab8b ; 
     transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 .btn-get-started:hover {
-    background-color: #81d67a ; 
+    background-color: #00ab8b ; 
     color: #fafafa ; 
-    border-color: #81d67a ; 
+    border-color: #00ab8b ; 
 }
 
 /******************** Features ********************/
 
 .bg-gray-200 {
-    background-color: #e9ecef; /* This is the Bootstrap gray-200 color */
+    background-color: #e9ecef; 
+}
+
+.feature-icon {
+    padding: 20px;
+}
+
+@media (max-width: 767px) {
+    .feature-list .row {
+        text-align: center;
+    }
+}
+
+/******************** Media queires ********************/
+
+@media (max-width: 1440px) {
+    .hero-bg-img {
+        background-image: url('/static/images/travel-data-img-1440px.jpg');
+        height: 50vh;
+        margin-top: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-bg-img {
+        background-image: url('/static/images/travel-data-img-768px.jpg');
+        height: 30vh;
+    }
+}
+
+@media (max-width: 425px) {
+    .hero-bg-img {
+        background-image: url('/static/images/travel-data-img-425px.jpg');
+        height: 20vh;
+    }
 }
