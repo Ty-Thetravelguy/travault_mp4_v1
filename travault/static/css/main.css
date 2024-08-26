@@ -20,6 +20,14 @@
     height: 50vh;
 }
 
+.banna-img-2 {
+    background-image: url('/static/images/data-spider-web-img-2560px.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 50vh;
+}
+
 /******************** Fonts ********************/
 
 .roboto {
@@ -111,12 +119,24 @@
         height: 50vh;
         margin-top: 5rem;
     }
+    .banna-img-1 {
+        background-image: url('/static/images/data-wave-img-1440px.jpg');
+    }
+    .banna-img-2 {
+        background-image: url('/static/images/data-spider-web-img-1440px.jpg');
+    }
 }
 
 @media (max-width: 768px) {
     .hero-bg-img {
         background-image: url('/static/images/travel-data-img-768px.jpg');
         height: 30vh;
+    }
+    .banna-img-1 {
+        background-image: url('/static/images/data-wave-img-768px.jpg');
+    }
+    .banna-img-2 {
+        background-image: url('/static/images/data-spider-web-img-768px.jpg');
     }
 }
 
@@ -125,4 +145,13 @@
         background-image: url('/static/images/travel-data-img-425px.jpg');
         height: 20vh;
     }
+    .banna-img-1 {
+        background-image: url('/static/images/data-wave-img-425px.jpg');
+    }
+    .banna-img-2 {
+        background-image: url('/static/images/data-spider-web-img-425px.jpg');
+    }
 }
+
+
+
