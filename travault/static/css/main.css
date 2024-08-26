@@ -31,11 +31,11 @@
 /******************** Fonts ********************/
 
 .roboto {
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
 }
 
 .Lato {
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;
 }
 
 /******************** Navbar ********************/
@@ -79,6 +79,14 @@
     font-size: 20px; 
 }
 
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 /******************** Get started section ********************/
 
 
@@ -105,11 +113,7 @@
     padding: 20px;
 }
 
-@media (max-width: 767px) {
-    .feature-list .row {
-        text-align: center;
-    }
-}
+
 
 /******************** Contact Us ********************/
 
@@ -120,7 +124,7 @@
     z-index: 1000;
   }
   
-  .floating-contact-btn .btn {
+.floating-contact-btn .btn {
     width: 60px;
     height: 60px;
     font-size: 24px;
@@ -133,12 +137,56 @@
     color: white; 
   }
   
-  .floating-contact-btn .btn:hover {
+.floating-contact-btn .btn:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease;
     background-color: #6ac763; 
     border-color: #6ac763;
   }
+
+  footer {
+    background-color: #343a40;  
+    color: #f8f9fa;
+    padding: 2rem 0;
+}
+
+footer h5 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+footer .list-unstyled li {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #afc0ec;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: #afc0ec;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
 
 /******************** Media queires ********************/
 
@@ -156,6 +204,12 @@
     }
 }
 
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #001f3f;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-bg-img {
         background-image: url('/static/images/travel-data-img-768px.jpg');
@@ -168,6 +222,12 @@
     .banna-img-2 {
         background-image: url('/static/images/data-spider-web-img-768px.jpg');
         height: 30vh;
+    }
+    .feature-list .row {
+        text-align: center;
+    }
+    footer h5 {
+        margin-top: 1.5rem;
     }
 }
 
@@ -183,6 +243,9 @@
     .banna-img-2 {
         background-image: url('/static/images/data-spider-web-img-425px.jpg');
         height: 20vh;
+    }
+    .custom-margin {
+        margin-left: 0 !important;
     }
 }
 
