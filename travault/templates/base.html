@@ -37,7 +37,50 @@
     <title>TraVault {% block extra_title %}{% endblock %}</title>
 </head>
 <body>
-    <header class="container-fluid fixed-top"></header>
+    <nav class="navbar navbar-expand-lg py-0 home-nav fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/TraVault_transparent-logo_v2.png' %}" alt="TraVault Logo" height="30"
+                    class="d-inline-block align-top logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link home-nav-text" href="{% url 'dashboard' %}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link home-nav-text" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active home-nav-text" aria-current="page" href="#home"
+                            data-section="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link home-nav-text" href="#features" data-section="features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link home-nav-text" href="#about-us" data-section="about-us">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link home-nav-text" href="#pricing" data-section="pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link home-nav-text" href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link home-nav-text" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
     
     {% if messages %}
     <div class="message-container"></div>
@@ -48,6 +91,8 @@
 
     {% block content %}
     {% endblock %}
+
+
 
     {% block postload_js %}
     {% endblock %}
