@@ -111,6 +111,35 @@
     }
 }
 
+/******************** Contact Us ********************/
+
+.floating-contact-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .floating-contact-btn .btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #81d67a;
+    border-color: #81d67a;
+    color: white; 
+  }
+  
+  .floating-contact-btn .btn:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    background-color: #6ac763; 
+    border-color: #6ac763;
+  }
+
 /******************** Media queires ********************/
 
 @media (max-width: 1440px) {
@@ -134,9 +163,11 @@
     }
     .banna-img-1 {
         background-image: url('/static/images/data-wave-img-768px.jpg');
+        height: 30vh;
     }
     .banna-img-2 {
         background-image: url('/static/images/data-spider-web-img-768px.jpg');
+        height: 30vh;
     }
 }
 
@@ -147,9 +178,11 @@
     }
     .banna-img-1 {
         background-image: url('/static/images/data-wave-img-425px.jpg');
+        height: 20vh;
     }
     .banna-img-2 {
         background-image: url('/static/images/data-spider-web-img-425px.jpg');
+        height: 20vh;
     }
 }
 

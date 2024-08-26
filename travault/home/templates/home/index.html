@@ -194,7 +194,7 @@
 
 <section id="pricing" class="bg-gray-200 ">
     <div class="banna-img-2"></div>
-    <div class="container py-5">
+    <div class="container py-5 roboto">
         <div class="row text-center mb-5">
             <div class="col">
                 <h2 class="display-4">Pricing</h2>
@@ -224,7 +224,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5 ms-5">
             <div class="col-md-4">
                 <h4>Why Choose TraVault?</h4>
                 <ul>
@@ -248,9 +248,43 @@
                     <li>30-day money-back guarantee</li>
                     <li>Dedicated onboarding support</li>
                 </ul>
-                <a href="#" class="btn btn-outline-primary mt-3">Contact Sales</a>
             </div>
         </div>
     </div>
 </section>
+<section class="contact-us">
+    <!-- Floating Contact Button -->
+    <div class="floating-contact-btn">
+        <button class="btn rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#contactOffcanvas" aria-controls="contactOffcanvas">
+            <i class="fas fa-envelope"></i>
+          </button>
+      </div>
+  
+      <!-- Contact Offcanvas -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="contactOffcanvas" aria-labelledby="contactOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="contactOffcanvasLabel">Contact Us</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <!-- Add your contact form or contact information here -->
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+        </div>
+      </div>
+</section>
+
 {% endblock %}
