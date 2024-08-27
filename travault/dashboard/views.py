@@ -8,3 +8,7 @@ def index(request):
 @login_required
 def profile(request):
     return render(request, 'dashboard/profile.html')
+
+@login_required
+def dashboard(request):
+    return render(request, 'dashboard/index.html') 

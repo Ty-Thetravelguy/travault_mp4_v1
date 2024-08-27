@@ -99,8 +99,8 @@ ACCOUNT_EMAIL_REQUIRED = True  # Require an email for signup
 ACCOUNT_USERNAME_REQUIRED = True  # Disable username (optional)
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # Allow login via username or email
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True  # Require users to enter their email twice
-LOGIN_REDIRECT_URL = "/accounts/login/"  # Redirect to homepage after login
-LOGOUT_REDIRECT_URL = "/accounts/login/"  # Redirect to login page after logout
+LOGIN_REDIRECT_URL = "/dashboard/"  # Redirect to homepage after login
+LOGOUT_REDIRECT_URL = "/index/"  # Redirect to login page after logout
 
 WSGI_APPLICATION = 'travault.wsgi.application'
 
