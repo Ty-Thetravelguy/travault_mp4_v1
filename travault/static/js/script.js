@@ -3,27 +3,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     const sections = document.querySelectorAll('section');
 
-    // Smooth scrolling
+    // Check if the current page is the home page
+    const isHomePage = window.location.pathname === '/';  // Adjust this if your home page has a different URL
+
+    // Smooth scrolling or page navigation
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId !== '#') {
+
+            if (targetId.startsWith('#') && isHomePage) {
+                e.preventDefault();
                 const targetSection = document.querySelector(targetId);
-                const navbarHeight = navbar.offsetHeight;
-                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                if (targetSection) {
+                    const navbarHeight = navbar.offsetHeight;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            } else if (targetId.startsWith('#') && !isHomePage) {
+                // If not on the home page, navigate back to home and then to the correct section
+                e.preventDefault();
+                window.location.href = '/' + targetId;  // Assuming '/' is the home page URL
             }
         });
     });
 
     // Combine scroll events
     window.onscroll = function() {
-        adjustNavbar();
-        updateActiveLink();
+        if (isHomePage) {
+            adjustNavbar();
+            updateActiveLink();
+        }
     };
 
     function adjustNavbar() {
@@ -45,9 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
+            if (link.getAttribute('href').startsWith('#')) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
             }
         });
     }
