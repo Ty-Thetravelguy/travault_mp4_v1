@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
 <section id="registration" class="bg-gray-200">
@@ -9,27 +10,14 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Register for TraVault</h2>
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
                         <form method="post" action="{% url 'register' %}">
                             {% csrf_token %}
                             <div class="mb-3">
                                 <label for="company_name" class="form-label">Company Name</label>
                                 <input type="text" class="form-control" id="company_name" name="company_name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="contact_name" class="form-label">Primary Contact Name</label>
-                                <input type="text" class="form-control" id="contact_name" name="contact_name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirm_password" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                             </div>
                             <div class="mb-3">
                                 <label for="company_address" class="form-label">Company Address</label>
@@ -39,6 +27,28 @@
                                 <label for="phone_number" class="form-label">Phone Number</label>
                                 <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="contact_name" class="form-label">Primary Contact Name</label>
+                                <input type="text" class="form-control" id="contact_name" name="contact_name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            {% for field in form %}
+                            <div class="mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field|add_class:"form-control" }}
+                                <div class="form-text text-muted">{{ field.help_text }}</div>
+                                {% if field.errors %}
+                                    <div class="alert alert-danger">
+                                        {% for error in field.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
                             <div class="mb-3">
                                 <label for="employees" class="form-label">Number of Employees</label>
                                 <select class="form-select" id="employees" name="employees" required>

@@ -10,11 +10,11 @@ def index(request):
 
 def terms_of_service(request):
     """ A view to return the Terms of Service page. """
-    return render(request, 'terms_of_service.html')
+    return render(request, 'home/terms_of_service.html')
 
 def privacy_policy(request):
     """ A view to return the Privacy Policy page. """
-    return render(request, 'privacy_policy.html')
+    return render(request, 'home/privacy_policy.html')
 
 def custom_registration(request):
     print("Register view called")  # This will print in your console to confirm the view is being hit
@@ -29,4 +29,4 @@ def custom_registration(request):
             messages.error(request, "Registration failed. Please correct the errors below.")
     else:
         form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'home/register.html', {'form': form})
