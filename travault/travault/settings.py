@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-h9rbxmfbrb3_41xk+&x&e@09n3z&v34n=)izr##wkqyf1oa=ek
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-tythetravel-travaultmp4-lgp1igqbki2.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = [
+    '8000-tythetravel-travaultmp4-lgp1igqbki2.ws.codeinstitute-ide.net',
+    'localhost',
+    '127.0.0.1'
+]
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-tythetravel-travaultmp4-lgp1igqbki2.ws.codeinstitute-ide.net'
