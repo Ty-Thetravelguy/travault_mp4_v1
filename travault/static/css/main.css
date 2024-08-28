@@ -1,12 +1,15 @@
 
 
 
+/******************** General  ********************/
+
 html, body {
     height: 100%;
 }
 .full-height-bg {
     min-height: 100vh;
 }
+
 
 
 /******************** Images  ********************/
@@ -193,6 +196,12 @@ footer a:hover {
 
 .social-links a:hover {
     color: #ffffff;
+}
+
+/******************** Reg, Login & Logout  ********************/
+
+.top-padding {
+    padding-top: 5rem;
 }
 
 /******************** Media queires ********************/
