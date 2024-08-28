@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'home',
     'allauth',
     'allauth.account',
-    'home',
     'dashboard',
 ]
 
@@ -67,7 +67,6 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
-            os.path.join(BASE_DIR / "static"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -101,6 +100,8 @@ ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # Allow login via username or 
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True  # Require users to enter their email twice
 LOGIN_REDIRECT_URL = "/dashboard/"  # Redirect to homepage after login
 LOGOUT_REDIRECT_URL = "home/index/"  # Redirect to login page after logout
+SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Ensures cookies are cleared when the browser is closed
 
 ACCOUNT_FORMS = {
     'signup': 'yourapp.forms.CustomSignupForm',  # Adjust to your app's structure

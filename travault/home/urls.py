@@ -8,4 +8,5 @@ urlpatterns = [
     path('terms-of-service/', views.terms_of_service, name='terms_of_service'),
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('custom-registration/', views.custom_registration, name='register'),
+    # path('login/', LoginView.as_view(template_name='account/login.html'), name='login'),
 ]
