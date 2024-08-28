@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
     'home',
     'allauth',
     'allauth.account',
@@ -98,19 +99,32 @@ SITE_ID = 1
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Allauth settings
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # Require email verification
-ACCOUNT_EMAIL_REQUIRED = True  # Require an email for signup
-ACCOUNT_USERNAME_REQUIRED = True  # Disable username (optional)
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # Allow login via username or email
-ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True  # Require users to enter their email twice
-LOGIN_REDIRECT_URL = "/dashboard/"  # Redirect to homepage after login
-LOGOUT_REDIRECT_URL = "home/index/"  # Redirect to login page after logout
-SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Ensures cookies are cleared when the browser is closed
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+LOGIN_REDIRECT_URL = "/dashboard/"
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+ACCOUNT_LOGOUT_ON_GET = False
 
+# Add these new settings
 ACCOUNT_FORMS = {
-    'signup': 'yourapp.forms.CustomSignupForm',  # Adjust to your app's structure
+    'signup': 'home.forms.CustomUserCreationForm',
 }
+ACCOUNT_SIGNUP_FORM_CLASS = 'home.forms.CustomUserCreationForm'
+ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+# Ensure these are set for password reset functionality
+LOGIN_URL = '/accounts/login/'
+PASSWORD_RESET_TIMEOUT = 259200  # 3 days in seconds
 
 WSGI_APPLICATION = 'travault.wsgi.application'
 

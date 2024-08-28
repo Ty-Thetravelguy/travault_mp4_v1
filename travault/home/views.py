@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from .forms import CustomUserCreationForm
 from django.contrib import messages
-from django.contrib.auth import get_backends
 
 def logout_view(request):
     """Logs the user out and redirects to the home page."""
+    print("Custom logout view is being called!")
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('home/index.html')  # Redirect to the home page or any page of your choice

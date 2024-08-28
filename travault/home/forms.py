@@ -55,52 +55,38 @@ class CustomUserCreationForm(UserCreationForm):
             raise forms.ValidationError("A company with this registration number already exists.")
         return reg_number
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.email = self.cleaned_data['email']
-    
-        user.set_password(self.cleaned_data["password1"])  # Ensure the password is hashed
-
-        full_name = self.cleaned_data.get('contact_full_name', '')
-        name_parts = full_name.split(None, 1)
-        first_name = name_parts[0]
-        last_name = name_parts[1] if len(name_parts) > 1 else ''
+    def signup(self, request, user):
+        user.save()
         
-        user.first_name = first_name
-        user.last_name = last_name
-        
-        if commit:
-            user.save()
+        # Create Address instance
+        address_lines = self.cleaned_data['company_address'].split('\n')
+        address = Address.objects.create(
+            line1=address_lines[0],
+            line2=address_lines[1] if len(address_lines) > 1 else '',
+            line3=address_lines[2] if len(address_lines) > 2 else '',
+            line4=address_lines[3] if len(address_lines) > 3 else '',
+            line5=address_lines[4] if len(address_lines) > 4 else ''
+        )
 
-            # Create Address instance
-            address_lines = self.cleaned_data['company_address'].split('\n')
-            address = Address.objects.create(
-                line1=address_lines[0],
-                line2=address_lines[1] if len(address_lines) > 1 else '',
-                line3=address_lines[2] if len(address_lines) > 2 else '',
-                line4=address_lines[3] if len(address_lines) > 3 else '',
-                line5=address_lines[4] if len(address_lines) > 4 else ''
-            )
+        # Create CompanyProfile instance
+        company_profile = CompanyProfile.objects.create(
+            user=user,
+            company_name=self.cleaned_data['company_name'],
+            vat_number=self.cleaned_data['vat_number'],
+            company_reg_number=self.cleaned_data['company_reg_number'],
+            address=address,
+            phone_number=self.cleaned_data['phone_number'],
+            contact_first_name=user.first_name,
+            contact_last_name=user.last_name,
+            employees=self.cleaned_data['employees'],
+            business_focus=self.cleaned_data['business_focus']
+        )
 
-            # Create CompanyProfile instance
-            company_profile = CompanyProfile.objects.create(
-                user=user,
-                company_name=self.cleaned_data['company_name'],
-                vat_number=self.cleaned_data['vat_number'],
-                company_reg_number=self.cleaned_data['company_reg_number'],
-                address=address,
-                phone_number=self.cleaned_data['phone_number'],
-                contact_first_name=first_name,
-                contact_last_name=last_name,
-                employees=self.cleaned_data['employees'],
-                business_focus=self.cleaned_data['business_focus']
-            )
-
-            # Create CompanyUser instance, setting the user as the admin
-            CompanyUser.objects.create(
-                user=user,
-                company=company_profile,
-                is_company_admin=True
-            )
+        # Create CompanyUser instance, setting the user as the admin
+        CompanyUser.objects.create(
+            user=user,
+            company=company_profile,
+            is_company_admin=True
+        )
 
         return user
