@@ -58,7 +58,9 @@ class CustomUserCreationForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
-        
+    
+        user.set_password(self.cleaned_data["password1"])  # Ensure the password is hashed
+
         full_name = self.cleaned_data.get('contact_full_name', '')
         name_parts = full_name.split(None, 1)
         first_name = name_parts[0]
