@@ -39,7 +39,7 @@
 <body>
     <nav class="navbar navbar-expand-lg py-0 home-nav fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/TraVault_transparent-logo_v2.png' %}" alt="TraVault Logo" height="30"
                     class="d-inline-block align-top logo">
             </a>
@@ -50,12 +50,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
+                        <li class="nav-item pt-1">
                             <a class="nav-link home-nav-text" href="{% url 'dashboard:index' %}">Dashboard</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link home-nav-text" href="{% url 'account_logout' %}">Logout</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-gear"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Manage Users</a></li>
+                                <li><a class="dropdown-item" href="#">Billing</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                            </ul>
+                        </li> 
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link home-nav-text {% if request.path == '/' %}active{% endif %}" aria-current="page" href="#home"

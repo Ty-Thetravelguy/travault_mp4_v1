@@ -2,5 +2,41 @@
 {% load static %}
 
 {% block content %}
-
+<div class="container-fluid full-height-bg bg-gray-200">
+    <div class="container">
+        <h1 class="mb-4">Dashboard</h1>
+        <div class="row text-center dashboard-cards">
+            <div class="col-sm-12 col-md-4 mb-4">
+                <a href="#" class="card-link">
+                    <div class="card h-100 shadow card-button">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Agent Support</h5>
+                            <p class="card-text">Access agent support tools and resources.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4 mb-4">
+                <a href="#" class="card-link">
+                    <div class="card h-100 shadow card-button">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">CRM</h5>
+                            <p class="card-text">Manage customer relationships and data.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4 mb-4">
+                <a href="#" class="card-link">
+                    <div class="card h-100 shadow card-button">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">View Tickets</h5>
+                            <p class="card-text">Access and manage support tickets.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -66,14 +66,31 @@ html, body {
     margin-top: 10px;
 }
 
+.dropdown-toggle {
+    font-family: Lato;
+    color: #fafafa;
+    margin: 10px 20px 10px 0;
+    font-size: 20px;
+}
+
+
 .navbar-nav .nav-link.active {
     font-size: 25px;
     color: #FAFAFA;
     transition: all 0.3s ease;
 }
 
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #afc0ec;   
+}
+
 .navbar-nav .nav-link:hover {
     color: #afc0ec; 
+}
+
+.dropdown-item:hover {
+    background-color: #afc0ec; /* Change this to your desired background color */
+    color: #000; /* Change this to your desired text color */
 }
 
 .navbar-scrolled .logo {
@@ -202,6 +219,28 @@ footer a:hover {
 
 .top-padding {
     padding-top: 5rem;
+}
+
+/******************** Dashboard  ********************/
+
+.card-button {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+.card-button:hover {
+    transform: scale(1.05);
+}
+
+.dashboard-cards {
+    margin-top: 100px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+.card-link:hover {
+    color: inherit;
 }
 
 /******************** Media queires ********************/
