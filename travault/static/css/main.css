@@ -114,17 +114,19 @@ html, body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/******************** Get started section ********************/
+/******************** Get started section / Buttons colors ********************/
 
 
-.btn-get-started {
+.btn-get-started,
+.btn-search {
     color: #00ab8b ; 
     background-color: #ffffff ; 
     border-color: #00ab8b ; 
     transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-.btn-get-started:hover {
+.btn-get-started:hover,
+.btn-search:hover {
     background-color: #00ab8b ; 
     color: #fafafa ; 
     border-color: #00ab8b ; 
@@ -232,7 +234,8 @@ footer a:hover {
 }
 
 .dashboard-cards {
-    margin-top: 100px;
+    margin-top: 90px;
+    padding-top: 20px;
 }
 
 .card-link {
