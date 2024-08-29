@@ -3,9 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . forms import AgentSupportSupplierForm
 
-# from django.db.models import Q
-# from .models import SupportItem
-
 @login_required
 def agent_support_home(request):
     return render(request, 'agent_support/index.html')
@@ -19,7 +16,7 @@ def add_agent_support_supplier(request):
             supplier.user = request.user
             supplier.save()
             messages.success(request, 'Supplier added successfully!')
-            return redirect(reverse('agent_support:agent_support_home'))
+            return redirect('agent_support:agent_support_home')
         else:
             messages.error(request, 'There was an error in the form. Please check and try again.')
     else:
