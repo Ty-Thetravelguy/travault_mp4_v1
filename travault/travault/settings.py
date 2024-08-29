@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'dashboard',
+    'agent_support',
+    'users',
 ]
 
 MIDDLEWARE = [

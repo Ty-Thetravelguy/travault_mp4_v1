@@ -8,4 +8,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('logout/', logout_view, name='logout'),    
     path('dashboard/', include('dashboard.urls', namespace='dashboard')),
+    path('agent_support/', include('agent_support.urls')),
 ]
