@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}Confirm User Deletion - TraVault{% endblock %}
+
+{% block content %}
+<section id="confirm-delete" class="bg-gray-200 full-height-bg">
+    <div class="container top-padding roboto">
+        <div class="row justify-content-center py-5">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Confirm User Deletion</h2>
+
+                        <p class="text-center mb-4">Are you sure you want to delete the user "{{ user.username }}"?</p>
+
+                        <form method="post" class="text-center">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="confirm_username" class="form-label">Please enter the username to confirm
+                                    deletion:</label>
+                                <input type="text" class="form-control" id="confirm_username" name="confirm_username"
+                                    required>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-danger btn-lg me-2">Confirm Delete</button>
+                                <a href="{% url 'users:manage_users' %}" class="btn btn-secondary btn-lg">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid full-height-bg bg-gray-200">
+    <div class="container mt-4 full-height-bg bg-gray-200 top-padding">
+        <h2 class="text-center flex-grow-1 roboto">Manage Users</h2>
+        <a href="{% url 'users:add_user' %}" class="btn btn-primary mb-3">Add New User</a>
+        <div class="row">
+            <div class="col-12">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-center flex-grow-1">Manage Users</h2>
+            <a href="{% url 'users:add_user' %}" class="btn btn-primary">Add New User</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company_user in users %}
+                <tr>
+                    <td>{{ company_user.user.username }}</td>
+                    <td>{{ company_user.user.email }}</td>
+                    <td>{{ company_user.user.first_name }}</td>
+                    <td>{{ company_user.user.last_name }}</td>
+                    <td>{{ company_user.get_role_display }}</td>
+                    <td>
+                        <a href="{% url 'users:edit_user' company_user.id %}" class="btn btn-sm btn-secondary">Edit</a>
+                        {% if request.user.companyuser.is_admin %}
+                        <a href="{% url 'users:delete_user' company_user.id %}" class="btn btn-sm btn-danger">Delete</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

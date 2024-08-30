@@ -48,12 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django_extensions',
+    'users.apps.UsersConfig', 
     'home',
     'allauth',
     'allauth.account',
     'dashboard',
     'agent_support',
-    'users',
 ]
 
 MIDDLEWARE = [
@@ -109,10 +109,12 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 LOGIN_REDIRECT_URL = "/dashboard/"
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
-ACCOUNT_LOGOUT_ON_GET = False
+ACCOUNT_LOGOUT_ON_GET = True
+
+ACCOUNT_RATE_LIMITS = {
+    'login_failed': '5/300s',  # 5 failed attempts in 300 seconds (5 minutes)
+}
 
 # Add these new settings
 ACCOUNT_FORMS = {
