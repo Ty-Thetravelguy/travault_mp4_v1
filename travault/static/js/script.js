@@ -73,5 +73,42 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => message.remove(), 150);
         }, 5000);
     });
-});
 
+    // New code starts here
+
+    // Filter suppliers by name
+    document.getElementById('supplierNameFilter').addEventListener('keyup', function () {
+        var filterValue = this.value.toLowerCase();
+        document.querySelectorAll('.supplier-item').forEach(function (item) {
+            var supplierName = item.getAttribute('data-supplier-name').toLowerCase();
+            item.style.display = supplierName.indexOf(filterValue) > -1 ? '' : 'none';
+        });
+    });
+
+    // Filter suppliers by type
+    document.getElementById('supplierTypeFilter').addEventListener('change', function () {
+        var filterValue = this.value;
+        document.querySelectorAll('.supplier-item').forEach(function (item) {
+            var supplierType = item.getAttribute('data-supplier-type');
+            if (filterValue === "" || supplierType === filterValue) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+
+    // Adjust tabs
+    function adjustTabs() {
+        document.querySelectorAll('.nav-tabs').forEach(function (tabsContainer) {
+            if (tabsContainer.scrollWidth > tabsContainer.clientWidth) {
+                tabsContainer.classList.add('flex-nowrap', 'overflow-auto');
+            } else {
+                tabsContainer.classList.remove('flex-nowrap', 'overflow-auto');
+            }
+        });
+    }
+
+    adjustTabs();
+    window.addEventListener('resize', adjustTabs);
+});

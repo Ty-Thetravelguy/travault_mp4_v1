@@ -152,32 +152,4 @@
     </div>
 </div>
 
-<!-- JavaScript for Filtering -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Filter suppliers by name
-        $('#supplierNameFilter').on('keyup', function () {
-            var filterValue = $(this).val().toLowerCase();
-            $('.supplier-item').filter(function () {
-                $(this).toggle($(this).data('supplier-name').indexOf(filterValue) > -1);
-            });
-        });
-
-        // Filter suppliers by type
-        $('#supplierTypeFilter').on('change', function () {
-            var filterValue = $(this).val();
-            if (filterValue === "") {
-                $('.supplier-item').show(); // Show all if no type is selected
-            } else {
-                $('.supplier-item').filter(function () {
-                    return $(this).data('supplier-type') !== filterValue;
-                }).hide();
-                $('.supplier-item').filter(function () {
-                    return $(this).data('supplier-type') === filterValue;
-                }).show();
-            }
-        });
-    });
-</script>
 {% endblock %}
