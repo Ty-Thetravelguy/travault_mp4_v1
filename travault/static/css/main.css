@@ -19,7 +19,7 @@ html, body {
     margin: 0;
     left: auto;
     right: 20px;
-    top: 100px; /* Adjust this value based on your navbar height */
+    top: 100px; 
     z-index: 1030;
 }
 
