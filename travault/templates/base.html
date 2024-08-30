@@ -107,7 +107,11 @@
     </nav>
 
     {% if messages %}
-    <div class="message-container"></div>
+    <div class="message-container container top-padding mt-3 bg-gray-200">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block page_header %}
