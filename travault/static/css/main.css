@@ -14,6 +14,18 @@ html, body {
     color: #001f3f;
 }
 
+#message-container {
+    max-width: 600px;
+    margin: 0;
+    left: auto;
+    right: 20px;
+    top: 100px; /* Adjust this value based on your navbar height */
+    z-index: 1030;
+}
+
+#message-container .alert {
+    margin-bottom: 0.5rem;
+}
 
 /******************** Images  ********************/
 

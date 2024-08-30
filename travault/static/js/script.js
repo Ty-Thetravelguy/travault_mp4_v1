@@ -65,5 +65,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    const messages = document.querySelectorAll('.alert');
+    messages.forEach(message => {
+        setTimeout(() => {
+            message.classList.remove('show');
+            setTimeout(() => message.remove(), 150);
+        }, 5000);
+    });
 });
 
