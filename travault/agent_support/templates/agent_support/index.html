@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
 <div class="container-fluid full-height-bg py-5">
     <div class="container mt-4">
@@ -16,72 +15,103 @@
             <button type="submit">Search</button>
         </form>
         <div class="accordion" id="agentSupportAccordion">
+            {% for supplier in suppliers %}
             <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Customer Information
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                    data-bs-parent="#agentSupportAccordion">
-                    <div class="accordion-body">
-                        <ul class="nav nav-tabs" id="customerInfoTabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                    aria-selected="true">Profile</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history"
-                                    type="button" role="tab" aria-controls="history"
-                                    aria-selected="false">History</button>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="customerInfoTabContent">
-                            <div class="tab-pane fade show active" id="profile" role="tabpanel"
-                                aria-labelledby="profile-tab">
-                                <p>Customer profile information goes here.</p>
-                            </div>
-                            <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
-                                <p>Customer history information goes here.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
+                <h2 class="accordion-header" id="heading{{ forloop.counter }}">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Support Resources
+                        data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false"
+                        aria-controls="collapse{{ forloop.counter }}">
+                        {{ supplier.supplier_name }}
                     </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#agentSupportAccordion">
+                <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse"
+                    aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#agentSupportAccordion">
                     <div class="accordion-body">
-                        <ul class="nav nav-tabs" id="supportResourcesTabs" role="tablist">
+                        <ul class="nav nav-tabs" id="supplierInfoTabs{{ forloop.counter }}" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq"
-                                    type="button" role="tab" aria-controls="faq" aria-selected="true">FAQ</button>
+                                <button class="nav-link active" id="info-tab{{ forloop.counter }}" data-bs-toggle="tab"
+                                    data-bs-target="#info{{ forloop.counter }}" type="button" role="tab"
+                                    aria-controls="info{{ forloop.counter }}" aria-selected="true">Information</button>
                             </li>
+                            {% if supplier.process_1_subject %}
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="scripts-tab" data-bs-toggle="tab" data-bs-target="#scripts"
-                                    type="button" role="tab" aria-controls="scripts"
-                                    aria-selected="false">Scripts</button>
+                                <button class="nav-link" id="process1-tab{{ forloop.counter }}" data-bs-toggle="tab"
+                                    data-bs-target="#process1{{ forloop.counter }}" type="button" role="tab"
+                                    aria-controls="process1{{ forloop.counter }}" aria-selected="false">Process
+                                    1</button>
                             </li>
+                            {% endif %}
+                            {% if supplier.process_2_subject %}
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="process2-tab{{ forloop.counter }}" data-bs-toggle="tab"
+                                    data-bs-target="#process2{{ forloop.counter }}" type="button" role="tab"
+                                    aria-controls="process2{{ forloop.counter }}" aria-selected="false">Process
+                                    2</button>
+                            </li>
+                            {% endif %}
+                            {% if supplier.process_3_subject %}
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="process3-tab{{ forloop.counter }}" data-bs-toggle="tab"
+                                    data-bs-target="#process3{{ forloop.counter }}" type="button" role="tab"
+                                    aria-controls="process3{{ forloop.counter }}" aria-selected="false">Process
+                                    3</button>
+                            </li>
+                            {% endif %}
+                            {% if supplier.process_4_subject %}
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="process4-tab{{ forloop.counter }}" data-bs-toggle="tab"
+                                    data-bs-target="#process4{{ forloop.counter }}" type="button" role="tab"
+                                    aria-controls="process4{{ forloop.counter }}" aria-selected="false">Process
+                                    4</button>
+                            </li>
+                            {% endif %}
                         </ul>
-                        <div class="tab-content" id="supportResourcesTabContent">
-                            <div class="tab-pane fade show active" id="faq" role="tabpanel" aria-labelledby="faq-tab">
-                                <p>Frequently asked questions and answers go here.</p>
+                        <div class="tab-content" id="supplierInfoTabContent{{ forloop.counter }}">
+                            <div class="tab-pane fade show active" id="info{{ forloop.counter }}" role="tabpanel"
+                                aria-labelledby="info-tab{{ forloop.counter }}">
+                                <p><strong>Supplier Type:</strong> {{ supplier.get_supplier_type_display }}</p>
+                                <p><strong>Agent Websites:</strong> {{ supplier.agent_websites }}</p>
+                                <p><strong>Contact Numbers:</strong> {{ supplier.contact_numbers }}</p>
+                                <p><strong>Group Email:</strong> {{ supplier.group_email }}</p>
+                                <p><strong>General Email:</strong> {{ supplier.general_email }}</p>
+                                <p><strong>Account Manager:</strong> {{ supplier.account_manager }}</p>
+                                <p><strong>Account Manager Contact:</strong> {{ supplier.account_manager_contact }}</p>
+                                <p><strong>Account Manager Email:</strong> {{ supplier.account_manager_email }}</p>
+                                <p><strong>Other:</strong> {{ supplier.other }}</p>
                             </div>
-                            <div class="tab-pane fade" id="scripts" role="tabpanel" aria-labelledby="scripts-tab">
-                                <p>Support scripts and guidelines go here.</p>
+                            {% if supplier.process_1_subject %}
+                            <div class="tab-pane fade" id="process1{{ forloop.counter }}" role="tabpanel"
+                                aria-labelledby="process1-tab{{ forloop.counter }}">
+                                <p><strong>Process 1 Subject:</strong> {{ supplier.process_1_subject }}</p>
+                                <p>{{ supplier.process_1_text }}</p>
                             </div>
+                            {% endif %}
+                            {% if supplier.process_2_subject %}
+                            <div class="tab-pane fade" id="process2{{ forloop.counter }}" role="tabpanel"
+                                aria-labelledby="process2-tab{{ forloop.counter }}">
+                                <p><strong>Process 2 Subject:</strong> {{ supplier.process_2_subject }}</p>
+                                <p>{{ supplier.process_2_text }}</p>
+                            </div>
+                            {% endif %}
+                            {% if supplier.process_3_subject %}
+                            <div class="tab-pane fade" id="process3{{ forloop.counter }}" role="tabpanel"
+                                aria-labelledby="process3-tab{{ forloop.counter }}">
+                                <p><strong>Process 3 Subject:</strong> {{ supplier.process_3_subject }}</p>
+                                <p>{{ supplier.process_3_text }}</p>
+                            </div>
+                            {% endif %}
+                            {% if supplier.process_4_subject %}
+                            <div class="tab-pane fade" id="process4{{ forloop.counter }}" role="tabpanel"
+                                aria-labelledby="process4-tab{{ forloop.counter }}">
+                                <p><strong>Process 4 Subject:</strong> {{ supplier.process_4_subject }}</p>
+                                <p>{{ supplier.process_4_text }}</p>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
