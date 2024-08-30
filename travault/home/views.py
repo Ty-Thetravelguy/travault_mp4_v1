@@ -8,7 +8,7 @@ def logout_view(request):
     print("Custom logout view is being called!")
     logout(request)
     messages.success(request, "You have been logged out successfully.")
-    return redirect('home/index.html')  # Redirect to the home page or any page of your choice
+    return redirect('home')  # Redirect to the home page or any page of your choice
 
 def index(request):
     """ A view to return the index page. """
