@@ -3,10 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     const sections = document.querySelectorAll('section');
 
-    // Check if the current page is the home page
-    const isHomePage = window.location.pathname === '/';  // Adjust this if your home page has a different URL
 
-    // Smooth scrolling or page navigation
+    const isHomePage = window.location.pathname === '/';  
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -23,9 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
             } else if (targetId.startsWith('#') && !isHomePage) {
-                // If not on the home page, navigate back to home and then to the correct section
                 e.preventDefault();
-                window.location.href = '/' + targetId;  // Assuming '/' is the home page URL
+                window.location.href = '/' + targetId;  
             }
         });
     });
@@ -74,9 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     });
 
-    // New code starts here
 
-    // Filter suppliers by name
     document.getElementById('supplierNameFilter').addEventListener('keyup', function () {
         var filterValue = this.value.toLowerCase();
         document.querySelectorAll('.supplier-item').forEach(function (item) {

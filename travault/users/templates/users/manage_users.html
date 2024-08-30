@@ -30,9 +30,12 @@
                     <td>{{ company_user.user.last_name }}</td>
                     <td>{{ company_user.get_role_display }}</td>
                     <td>
-                        <a href="{% url 'users:edit_user' company_user.id %}" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="{% url 'users:edit_user' company_user.id %}"
+                            class="btn btn-outline-primary btn-sm me-2">
+                            <i class="fas fa-edit"></i> Edit</a>
                         {% if request.user.companyuser.is_admin %}
-                        <a href="{% url 'users:delete_user' company_user.id %}" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="{% url 'users:delete_user' company_user.id %}" class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Delete</a>
                         {% endif %}
                     </td>
                 </tr>
