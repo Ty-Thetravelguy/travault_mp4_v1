@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid full-height-bg top-padding">
+    <div class="container mt-4">
+        <h1 class="project-primary-color">Delete Supplier - {{ supplier.supplier_name }}</h1>
+        <div class="alert alert-danger mt-4">
+            <p>You are about to delete the supplier <strong>{{ supplier.supplier_name }}</strong>. This action cannot be
+                undone.</p>
+            <p>To confirm deletion, please type the supplier's name in the box below and click "Confirm Delete".</p>
+        </div>
+        <div class="card shadow mt-4">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="confirmation_name" class="form-label">Confirm Supplier Name</label>
+                        <input type="text" name="confirmation_name" id="confirmation_name" class="form-control"
+                            placeholder="Type the supplier name to confirm deletion">
+                        {% if form.confirmation_name.errors %}
+                        <p class="text-danger">{{ form.confirmation_name.errors }}</p>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                    <a href="{% url 'agent_support:agent_support_home' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
