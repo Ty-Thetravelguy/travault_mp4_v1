@@ -4,13 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import AgentSupportSupplierForm
 from .models import AgentSupportSupplier
-from home.models import CompanyUser
+from users.models import UserRoles
 from .decorators import role_required
 
 @login_required
 @role_required(['user', 'manager', 'admin'])
 def agent_support_home(request):
-    company_user = request.user.companyuser
+    company_user = request.user.userroles  
     suppliers = AgentSupportSupplier.objects.filter(company=company_user.company).order_by('supplier_name')
     supplier_types = AgentSupportSupplier.SUPPLIER_TYPES
     
@@ -23,9 +23,9 @@ def agent_support_home(request):
 @role_required(['manager', 'admin'])
 def add_agent_support_supplier(request):
     try:
-        company_user = request.user.companyuser
+        company_user = request.user.userroles
         print(f"Adding supplier for: {company_user.company}")
-    except CompanyUser.DoesNotExist:
+    except UserRoles.DoesNotExist:
         messages.error(request, "Company user association is missing. Contact your administrator.")
         return redirect('home')  # Or a relevant page
     

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'dashboard',
     'agent_support',
     'crm',
+    'agency',
 ]
 
 MIDDLEWARE = [

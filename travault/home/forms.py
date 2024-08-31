@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import CompanyProfile, Address, CompanyUser
+from agency.models import AgencyProfile, Address
+from users.models import UserRoles
 
 class CustomUserCreationForm(UserCreationForm):
     company_name = forms.CharField(max_length=100, required=True)
@@ -39,19 +40,19 @@ class CustomUserCreationForm(UserCreationForm):
 
     def clean_company_name(self):
         company_name = self.cleaned_data.get('company_name')
-        if CompanyProfile.objects.filter(company_name=company_name).exists():
+        if AgencyProfile.objects.filter(company_name=company_name).exists():
             raise forms.ValidationError("A company with this name already exists.")
         return company_name
 
     def clean_vat_number(self):
         vat_number = self.cleaned_data.get('vat_number')
-        if CompanyProfile.objects.filter(vat_number=vat_number).exists():
+        if AgencyProfile.objects.filter(vat_number=vat_number).exists():
             raise forms.ValidationError("A company with this VAT number already exists.")
         return vat_number
 
     def clean_company_reg_number(self):
         reg_number = self.cleaned_data.get('company_reg_number')
-        if CompanyProfile.objects.filter(company_reg_number=reg_number).exists():
+        if AgencyProfile.objects.filter(company_reg_number=reg_number).exists():
             raise forms.ValidationError("A company with this registration number already exists.")
         return reg_number
 
@@ -68,8 +69,8 @@ class CustomUserCreationForm(UserCreationForm):
             line5=address_lines[4] if len(address_lines) > 4 else ''
         )
 
-        # Create CompanyProfile instance
-        company_profile = CompanyProfile.objects.create(
+        # Create AgencyProfile instance
+        company_profile = AgencyProfile.objects.create(
             user=user,
             company_name=self.cleaned_data['company_name'],
             vat_number=self.cleaned_data['vat_number'],
@@ -82,8 +83,8 @@ class CustomUserCreationForm(UserCreationForm):
             business_focus=self.cleaned_data['business_focus']
         )
 
-        # Create CompanyUser instance, setting the user as the admin
-        CompanyUser.objects.create(
+        # Create UserRoles instance, setting the user as the admin
+        UserRoles.objects.create(
             user=user,
             company=company_profile,
             is_company_admin=True

@@ -7,34 +7,34 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
-from home.models import CompanyUser
-from .forms import UserForm, CompanyUserForm
+from users.models import UserRoles
+from .forms import UserForm, UserRolesForm
 
 @login_required
 def manage_users(request):
-    if not request.user.companyuser.is_admin():
+    if not request.user.userroles.is_admin():
         messages.error(request, "You don't have permission to access this page.")
         return redirect('home')
     
-    company_users = CompanyUser.objects.filter(company=request.user.companyuser.company)
+    company_users = UserRoles.objects.filter(company=request.user.userroles.company)
     return render(request, 'users/manage_users.html', {'users': company_users})
 
 @login_required
 def add_user(request):
-    if not request.user.companyuser.is_admin():
+    if not request.user.userroles.is_admin():
         messages.error(request, "You don't have permission to add users.")
         return redirect('users:manage_users')
 
     if request.method == 'POST':
-        user_form = UserForm(request.POST, company=request.user.companyuser.company)
-        company_user_form = CompanyUserForm(request.POST)
+        user_form = UserForm(request.POST, company=request.user.userroles.company)
+        company_user_form = UserRolesForm(request.POST)
         if user_form.is_valid() and company_user_form.is_valid():
             user = user_form.save(commit=False)
             user.set_unusable_password()
             user.save()
             company_user = company_user_form.save(commit=False)
             company_user.user = user
-            company_user.company = request.user.companyuser.company
+            company_user.company = request.user.compauserrolesnuserrolesyuser.company
             company_user.save()
 
             # Generate password reset link
@@ -56,8 +56,8 @@ def add_user(request):
             messages.success(request, f"User {user.username} has been added successfully. An email has been sent to set their password.")
             return redirect('users:manage_users')
     else:
-        user_form = UserForm(company=request.user.companyuser.company)
-        company_user_form = CompanyUserForm()
+        user_form = UserForm(company=request.user.userroles.company)
+        company_user_form = UserRolesForm()
     
     return render(request, 'users/add_user.html', {
         'user_form': user_form,
@@ -66,23 +66,23 @@ def add_user(request):
 
 @login_required
 def edit_user(request, user_id):
-    if not request.user.companyuser.is_admin():
+    if not request.user.userroles.is_admin():
         messages.error(request, "You don't have permission to edit users.")
         return redirect('users:manage_users')
 
-    company_user = get_object_or_404(CompanyUser, id=user_id, company=request.user.companyuser.company)
+    company_user = get_object_or_404(UserRoles, id=user_id, company=request.user.userroles.company)
     
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=company_user.user, company=request.user.companyuser.company)
-        company_user_form = CompanyUserForm(request.POST, instance=company_user)
+        user_form = UserForm(request.POST, instance=company_user.user, company=request.user.userroles.company)
+        company_user_form = UserRolesForm(request.POST, instance=company_user)
         if user_form.is_valid() and company_user_form.is_valid():
             user_form.save()
             company_user_form.save()
             messages.success(request, f"User {company_user.user.username} has been updated.")
             return redirect('users:manage_users')
     else:
-        user_form = UserForm(instance=company_user.user, company=request.user.companyuser.company)
-        company_user_form = CompanyUserForm(instance=company_user)
+        user_form = UserForm(instance=company_user.user, company=request.user.userroles.company)
+        company_user_form = UserRolesForm(instance=company_user)
     
     return render(request, 'users/edit_user.html', {
         'user_form': user_form,
@@ -92,11 +92,11 @@ def edit_user(request, user_id):
 
 @login_required
 def delete_user(request, user_id):
-    if not request.user.companyuser.is_admin():
+    if not request.user.userroles.is_admin():
         messages.error(request, "You don't have permission to delete users.")
         return redirect('users:manage_users')
 
-    company_user = get_object_or_404(CompanyUser, id=user_id, company=request.user.companyuser.company)
+    company_user = get_object_or_404(UserRoles, id=user_id, company=request.user.userroles.company)
     user = company_user.user
 
     if request.method == 'POST':

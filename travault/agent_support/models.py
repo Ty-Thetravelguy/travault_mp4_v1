@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.conf import settings
-from home.models import CompanyUser  # Make sure this import is correct
+from agency.models import AgencyProfile  # Corrected import
 
 class AgentSupportSupplier(models.Model):
     SUPPLIER_TYPES = [
@@ -14,9 +14,7 @@ class AgentSupportSupplier(models.Model):
     ]
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # agent_support/models.py
-
-    company = models.ForeignKey('home.CompanyProfile', on_delete=models.CASCADE, default=1)  # Add default value
+    company = models.ForeignKey(AgencyProfile, on_delete=models.CASCADE, default=1)  # Corrected reference
 
     supplier_type = models.CharField(max_length=50, choices=SUPPLIER_TYPES)
     supplier_name = models.CharField(max_length=100)
